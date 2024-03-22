@@ -1,0 +1,49 @@
+plugins {
+    java
+}
+
+tasks.withType(Wrapper::class) {
+    gradleVersion = "8.7"
+}
+
+group = "com.example.jbehave"
+version = "1.0-SNAPSHOT"
+
+val allureVersion = "2.26.0"
+val jbehaveVersion = "5.2.0"
+val aspectJVersion = "1.9.21"
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+tasks.withType(JavaCompile::class) {
+    options.encoding = "UTF-8"
+    options.compilerArgs.add("-parameters")
+}
+
+val agent: Configuration by configurations.creating {
+    isCanBeConsumed = true
+    isCanBeResolved = true
+}
+
+tasks.test {
+    useJUnit()
+    jvmArgs = listOf(
+        "-javaagent:${agent.singleFile}"
+    )
+}
+
+dependencies {
+    agent("org.aspectj:aspectjweaver:$aspectJVersion")
+    testImplementation("org.jbehave:jbehave-core:$jbehaveVersion")
+    testImplementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
+    testImplementation("io.qameta.allure:allure-jbehave5")
+    testImplementation("org.slf4j:slf4j-simple:2.0.12")
+}
+
+repositories {
+    mavenCentral()
+}
