@@ -1,0 +1,1 @@
+{"30907ba0106b72487a0be9c487538122":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"505b06eb3e320915","reportUrl":"https://allure-examples.github.io/jbehave-gradlekts/2//#testresult/505b06eb3e320915","status":"passed","time":{"start":1711436962425,"stop":1711436962444,"duration":19}}]}}
