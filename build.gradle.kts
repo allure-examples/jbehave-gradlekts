@@ -3,13 +3,13 @@ plugins {
 }
 
 tasks.withType(Wrapper::class) {
-    gradleVersion = "8.7"
+    gradleVersion = "8.10.2"
 }
 
 group = "com.example.jbehave"
 version = "1.0-SNAPSHOT"
 
-val allureVersion = "2.26.0"
+val allureVersion = "2.29.0"
 val jbehaveVersion = "5.2.0"
 val aspectJVersion = "1.9.22"
 
@@ -41,7 +41,7 @@ dependencies {
     testImplementation("org.jbehave:jbehave-core:$jbehaveVersion")
     testImplementation(platform("io.qameta.allure:allure-bom:$allureVersion"))
     testImplementation("io.qameta.allure:allure-jbehave5")
-    testImplementation("org.slf4j:slf4j-simple:2.0.12")
+    testImplementation("org.slf4j:slf4j-simple:2.0.16")
 }
 
 repositories {
